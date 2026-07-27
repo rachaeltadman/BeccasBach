@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Becca's Bachelorette</title>
+<meta name="description" content="Toes in the sand, ring on her hand — Becca's Bachelorette, September 4-7, San Diego, CA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Lilita+One&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#FF6F61;
+    --pink:#FF1F8F;
+    --gold:#E8B33D;
+    --cream:#FFF3E2;
+    --navy:#150085;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:var(--cream);
+    color:#3a2a20;
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{
+    font-family:'Lilita One',cursive;
+    letter-spacing:.5px;
+  }
+  .script{
+    font-family:'Caveat',cursive;
+    font-weight:700;
+    letter-spacing:0;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--cream);
+    overflow:hidden;
+    padding:80px 24px;
+  }
+  .hero-video{
+    position:absolute;
+    top:50%;left:50%;
+    min-width:100%;min-height:100%;
+    width:auto;height:auto;
+    transform:translate(-50%,-50%);
+    object-fit:cover;
+    z-index:0;
+  }
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(160deg,rgba(255,111,97,.72) 0%,rgba(255,31,143,.72) 100%);
+    z-index:1;
+  }
+  .hero-content{position:relative;z-index:2;}
+  .pretitle{
+    font-size:clamp(22px,4vw,34px);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:6px;
+    color:var(--cream);
+  }
+  .hero h1{
+    font-size:clamp(40px,9vw,96px);
+    text-transform:uppercase;
+    line-height:1.05;
+    margin-bottom:22px;
+    color:var(--white);
+    text-shadow:0 6px 0 rgba(0,0,0,.06);
+  }
+  .hero-name{
+    font-size:clamp(38px,7vw,72px);
+    color:var(--white);
+    text-shadow:0 4px 0 rgba(0,0,0,.08);
+    margin-bottom:24px;
+    line-height:1;
+  }
+  .hero-sub{
+    display:inline-block;
+    background:var(--cream);
+    color:var(--pink);
+    font-weight:700;
+    padding:10px 26px;
+    border-radius:999px;
+    font-size:clamp(14px,2vw,18px);
+    letter-spacing:1px;
+  }
+  .doodle{position:absolute;opacity:.9;}
+  .hero .doodle{z-index:1;}
+
+  /* ---------- MEET BANNER ---------- */
+  .meet-banner{
+    background:var(--white);
+    text-align:center;
+    padding:44px 24px 8px;
+  }
+  .meet-banner .script{
+    display:block;
+    font-size:clamp(30px,5vw,46px);
+    color:var(--pink);
+    transform:rotate(-4deg);
+    margin-bottom:-8px;
+  }
+  .meet-banner .display{
+    display:block;
+    font-size:clamp(28px,5vw,44px);
+    color:var(--coral);
+    text-transform:uppercase;
+  }
+  .babes-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    max-width:640px;
+    margin:36px auto 0;
+    padding:0 24px 64px;
+  }
+  .babe-photo{
+    aspect-ratio:1/1;
+    border-radius:12px;
+    object-fit:cover;
+    width:100%;
+    height:100%;
+    display:block;
+    border:3px solid var(--white);
+    box-shadow:0 4px 10px rgba(255,111,97,.18);
+  }
+  .babe-photo.placeholder{
+    background:linear-gradient(135deg,var(--cream),#ffd9cf);
+    border:2px dashed var(--coral);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--coral);
+    font-size:12px;
+    text-align:center;
+    padding:8px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:80px 0;}
+  .section-title{
+    font-family:'Caveat',cursive;
+    font-weight:700;
+    text-align:center;
+    color:var(--pink);
+    font-size:clamp(34px,6vw,58px);
+    margin-bottom:12px;
+  }
+  .section-sub{
+    text-align:center;
+    color:#8a6a55;
+    max-width:560px;
+    margin:0 auto 48px;
+    font-size:15px;
+  }
+
+  /* ---------- ITINERARY ---------- */
+  .itinerary{background:var(--white);}
+  .day-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px;
+  }
+  .day-card{
+    background:var(--cream);
+    border-radius:20px;
+    padding:30px 26px;
+    position:relative;
+    border:3px solid transparent;
+    transition:transform .2s ease;
+  }
+  .day-card:hover{transform:translateY(-4px);}
+  .day-card h3{
+    color:var(--coral);
+    text-transform:uppercase;
+    font-size:26px;
+    margin-bottom:16px;
+  }
+  .day-card ul{list-style:none;}
+  .day-card li{
+    display:flex;
+    gap:10px;
+    padding:8px 0;
+    border-bottom:1px dashed rgba(255,111,97,.3);
+    font-size:14px;
+  }
+  .day-card li:last-child{border-bottom:none;}
+  .day-time{
+    color:var(--pink);
+    font-weight:700;
+    white-space:nowrap;
+    min-width:78px;
+  }
+
+  /* ---------- PACKING LIST ---------- */
+  .packing{background:var(--coral);color:var(--cream);}
+  .packing .section-title, .packing .section-sub{color:var(--cream);}
+  .pack-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+  }
+  .pack-card{
+    background:rgba(255,255,255,.12);
+    border:2px dashed rgba(255,255,255,.5);
+    border-radius:18px;
+    padding:26px;
+    text-align:center;
+  }
+  .pack-card h3{
+    text-transform:uppercase;
+    font-size:20px;
+    margin-bottom:10px;
+    color:var(--white);
+  }
+  .pack-card p{
+    font-style:italic;
+    opacity:.9;
+    font-size:14px;
+  }
+
+  /* ---------- STAY ---------- */
+  .stay{background:var(--white);}
+  .stay-grid{
+    display:flex;
+    justify-content:center;
+  }
+  .stay-card{
+    background:var(--white);
+    border-radius:14px;
+    padding:14px 14px 0;
+    box-shadow:0 10px 30px rgba(255,111,97,.18);
+    transform:rotate(-1.5deg);
+    max-width:460px;
+    width:100%;
+  }
+  .stay-photo{
+    height:200px;
+    border-radius:6px;
+    background:linear-gradient(135deg,var(--gold),var(--coral));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--white);
+    font-size:14px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .stay-body{padding:18px 8px 22px;background:var(--white);}
+  .stay-body h3{font-family:'Caveat',cursive;font-weight:700;color:var(--pink);font-size:30px;margin-bottom:4px;}
+  .stay-body p{font-size:14px;color:#8a6a55;}
+  .map-link{
+    display:inline-block;
+    margin-top:10px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--pink);
+    text-decoration:none;
+  }
+  .map-link:hover{text-decoration:underline;}
+  .stay-photo-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap:4px;
+    height:220px;
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .stay-photo-grid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .photo-main{grid-column:1;grid-row:1/3;}
+  .photo-sub-a{grid-column:2;grid-row:1;}
+  .photo-sub-b{grid-column:2;grid-row:2;}
+
+  /* ---------- PAYMENTS ---------- */
+  .payments{background:var(--cream);}
+  .pay-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:0;
+    background:var(--white);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(255,111,97,.12);
+  }
+  .pay-item{
+    padding:34px 22px;
+    text-align:center;
+    border-right:1px dashed rgba(255,111,97,.3);
+  }
+  .pay-item:last-child{border-right:none;}
+  .pay-item .amount{
+    display:block;
+    color:var(--pink);
+    font-family:'Lilita One',cursive;
+    font-size:22px;
+    margin-bottom:6px;
+  }
+  .pay-item .label{
+    font-size:13px;
+    color:#8a6a55;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--coral);
+    color:var(--cream);
+    text-align:center;
+    padding:40px 24px;
+    font-size:13px;
+  }
+  footer .script{color:var(--white);font-size:28px;margin-bottom:2px;}
+
+  @media(max-width:600px){
+    section{padding:56px 0;}
+    .pay-item{border-right:none;border-bottom:1px dashed rgba(255,111,97,.3);}
+    .pay-item:last-child{border-bottom:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="https://assets.mixkit.co/videos/1085/1085-thumb-720-1.jpg">
+    <source src="https://assets.mixkit.co/videos/1085/1085-720.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content wrap">
+    <p class="pretitle">Sun, Sand &amp; a</p>
+    <h1>Ring On Her Hand</h1>
+    <p class="hero-name script">Becca's Bachelorette</p>
+    <span class="hero-sub">September 4&ndash;7 &middot; San Diego, CA</span>
+  </div>
+</header>
+
+<!-- ================= MEET BANNER ================= -->
+<div class="meet-banner">
+  <span class="script">Meet</span>
+  <span class="display">Becca's Babes</span>
+  <div class="babes-grid">
+    <img class="babe-photo" src="images/babe-1.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-2.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-3.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-4.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-5.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-6.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-7.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-8.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-9.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-10.jpg" alt="Rachael">
+  </div>
+</div>
+
+<!-- ================= ITINERARY ================= -->
+<section class="itinerary" id="itinerary">
+  <div class="wrap">
+    <h2 class="section-title">The Weekend</h2>
+    <p class="section-sub">Four days of sun, sand, and celebrating Becca &mdash; here's the plan so far.</p>
+    <div class="day-grid">
+
+      <div class="day-card">
+        <h3>Friday</h3>
+        <ul>
+          <li><span class="day-time">4:00 PM</span><span>Check In</span></li>
+          <li><span class="day-time">6:30 PM</span><span>Dinner Out &amp; Exploring</span></li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <h3>Saturday</h3>
+        <ul>
+          <li><span class="day-time">10:00 AM</span><span>Pool</span></li>
+          <li><span class="day-time">1&ndash;5 PM</span><span>Boat</span></li>
+          <li><span class="day-time">7:30 PM</span><span>Dinner Out</span></li>
+          <li><span class="day-time">9:00 PM</span><span>Bar Hopping</span></li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <h3>Sunday</h3>
+        <ul>
+          <li><span class="day-time">11:00 AM</span><span>Beach Day &amp; Exploring</span></li>
+          <li><span class="day-time">7:00 PM</span><span>Dinner at Airbnb</span></li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <h3>Monday</h3>
+        <ul>
+          <li><span class="day-time">10:00 AM</span><span>Check Out</span></li>
+          <li><span class="day-time">10:10 AM</span><span>Exploring</span></li>
+          <li><span class="day-time">2:10 PM</span><span>Padres Game</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PACKING LIST ================= -->
+<section class="packing" id="packing">
+  <div class="wrap">
+    <h2 class="section-title">What To Pack</h2>
+    <p class="section-sub">A few activity-specific packing notes &mdash; details still being finalized.</p>
+    <div class="pack-grid">
+      <div class="pack-card">
+        <h3>Boat</h3>
+        <p>Details TBD</p>
+      </div>
+      <div class="pack-card">
+        <h3>Beach</h3>
+        <p>Details TBD</p>
+      </div>
+      <div class="pack-card">
+        <h3>Saturday Dinner</h3>
+        <p>Details TBD</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAY ================= -->
+<section class="stay" id="stay">
+  <div class="wrap">
+    <h2 class="section-title">Where We're Staying</h2>
+    <div class="stay-grid">
+      <div class="stay-card">
+        <div class="stay-photo-grid">
+          <img class="photo-main" src="images/airbnb-exterior.jpg" alt="Exterior of 721 Isthmus Court">
+          <img class="photo-sub-a" src="images/airbnb-patio.jpg" alt="Patio and outdoor dining area">
+          <img class="photo-sub-b" src="images/airbnb-interior.jpg" alt="Kitchen and living room">
+        </div>
+        <div class="stay-body">
+          <h3>The Airbnb</h3>
+          <p>721 Isthmus Court<br>San Diego, CA 92109</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=721+Isthmus+Court+San+Diego+CA+92109" target="_blank" rel="noopener">View on Google Maps &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAYMENTS ================= -->
+<section class="payments" id="payments">
+  <div class="wrap">
+    <h2 class="section-title">What Do I Need to Pay For?</h2>
+    <div class="pay-grid">
+      <div class="pay-item"><span class="amount">Airbnb</span></div>
+      <div class="pay-item"><span class="amount">Boat</span></div>
+      <div class="pay-item"><span class="amount">Flight</span></div>
+      <div class="pay-item"><span class="amount">Padres</span><span class="label">Optional</span></div>
+      <div class="pay-item"><span class="amount">Food &amp; Drink</span></div>
+    </div>
+    <p class="section-sub" style="margin-top:28px;">Prices are still being finalized. Track it all &mdash; and see who owes who &mdash; on <a href="expenses.html" style="color:var(--pink);font-weight:600;">the Trip Tab page</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <p class="script">Becca's Bachelorette</p>
+  <p>September 4&ndash;7, 2026 &middot; San Diego, California</p>
+</footer>
+
+</body>
+</html>
