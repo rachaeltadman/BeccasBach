@@ -121,8 +121,8 @@
   }
   .babes-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
     max-width:640px;
     margin:36px auto 0;
     padding:0 24px 64px;
@@ -130,6 +130,14 @@
   .babe-photo{
     aspect-ratio:1/1;
     border-radius:12px;
+    object-fit:cover;
+    width:100%;
+    height:100%;
+    display:block;
+    border:3px solid var(--white);
+    box-shadow:0 4px 10px rgba(255,111,97,.18);
+  }
+  .babe-photo.placeholder{
     background:linear-gradient(135deg,var(--cream),#ffd9cf);
     border:2px dashed var(--coral);
     display:flex;
@@ -227,9 +235,8 @@
   /* ---------- STAY ---------- */
   .stay{background:var(--white);}
   .stay-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:28px;
+    display:flex;
+    justify-content:center;
   }
   .stay-card{
     background:var(--white);
@@ -237,8 +244,9 @@
     padding:14px 14px 0;
     box-shadow:0 10px 30px rgba(255,111,97,.18);
     transform:rotate(-1.5deg);
+    max-width:460px;
+    width:100%;
   }
-  .stay-card:nth-child(2){transform:rotate(1.5deg);}
   .stay-photo{
     height:200px;
     border-radius:6px;
@@ -255,6 +263,33 @@
   .stay-body{padding:18px 8px 22px;background:var(--white);}
   .stay-body h3{font-family:'Caveat',cursive;font-weight:700;color:var(--pink);font-size:30px;margin-bottom:4px;}
   .stay-body p{font-size:14px;color:#8a6a55;}
+  .map-link{
+    display:inline-block;
+    margin-top:10px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--pink);
+    text-decoration:none;
+  }
+  .map-link:hover{text-decoration:underline;}
+  .stay-photo-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    grid-template-rows:1fr 1fr;
+    gap:4px;
+    height:220px;
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .stay-photo-grid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .photo-main{grid-column:1;grid-row:1/3;}
+  .photo-sub-a{grid-column:2;grid-row:1;}
+  .photo-sub-b{grid-column:2;grid-row:2;}
 
   /* ---------- PAYMENTS ---------- */
   .payments{background:var(--cream);}
@@ -285,41 +320,6 @@
     color:#8a6a55;
   }
 
-  /* ---------- TRIP TAB ---------- */
-  .tab{background:var(--white);}
-  .tab-columns{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start;}
-  .setup-notice{
-    background:#fff3cd;border:1px solid #ffe08a;color:#7a5b00;
-    padding:16px 20px;border-radius:12px;font-size:13px;margin-bottom:24px;
-  }
-  .balance-table{width:100%;border-collapse:collapse;background:var(--cream);border-radius:16px;overflow:hidden;}
-  .balance-table th,.balance-table td{padding:12px 16px;text-align:left;font-size:14px;}
-  .balance-table th{background:var(--coral);color:var(--white);text-transform:uppercase;font-size:11px;letter-spacing:.5px;}
-  .balance-table tr:nth-child(even) td{background:rgba(255,111,97,.08);}
-  .balance-pos{color:#2e8b57;font-weight:700;}
-  .balance-neg{color:var(--pink);font-weight:700;}
-  .settle-list{list-style:none;margin-top:20px;}
-  .settle-list li{background:var(--cream);border-radius:12px;padding:12px 16px;margin-bottom:8px;font-size:14px;}
-  .settle-list li b{color:var(--pink);}
-  .recent-list{list-style:none;margin-top:24px;font-size:13px;color:#8a6a55;}
-  .recent-list li{padding:6px 0;border-bottom:1px dashed rgba(255,111,97,.25);}
-  .expense-form{background:var(--cream);border-radius:16px;padding:26px;}
-  .expense-form h3{color:var(--pink);font-family:'Caveat',cursive;font-size:28px;margin-bottom:6px;}
-  .expense-form label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#8a6a55;margin:14px 0 4px;}
-  .expense-form input[type=text],.expense-form input[type=number],.expense-form select{
-    width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,111,97,.4);
-    font-family:'Poppins',sans-serif;font-size:14px;background:var(--white);
-  }
-  .checkbox-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:6px;}
-  .checkbox-grid label{display:flex;align-items:center;gap:6px;font-size:13px;text-transform:none;color:#3a2a20;margin:0;letter-spacing:0;}
-  .checkbox-grid input{width:auto;}
-  .expense-form button{
-    margin-top:20px;width:100%;background:var(--pink);color:var(--white);border:none;
-    padding:13px;border-radius:999px;font-weight:700;cursor:pointer;font-size:14px;letter-spacing:.5px;
-  }
-  .expense-form button:hover{background:var(--coral);}
-  @media(max-width:800px){.tab-columns{grid-template-columns:1fr;}}
-
   /* ---------- FOOTER ---------- */
   footer{
     background:var(--coral);
@@ -345,11 +345,6 @@
     <source src="https://assets.mixkit.co/videos/1085/1085-720.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-  <svg class="doodle ring-doodle" style="top:10%;right:9%;width:90px;" viewBox="0 0 100 120" fill="none">
-    <circle cx="50" cy="72" r="34" stroke="#FFF3E2" stroke-width="6"/>
-    <path d="M50 8 L66 40 L50 52 L34 40 Z" fill="#FFF3E2"/>
-    <path d="M38 34 L50 14 L44 34 Z" fill="#FFFFFF" opacity=".55"/>
-  </svg>
   <div class="hero-content wrap">
     <p class="pretitle">Sun, Sand &amp; a</p>
     <h1>Ring On Her Hand</h1>
@@ -363,15 +358,16 @@
   <span class="script">Meet</span>
   <span class="display">Becca's Babes</span>
   <div class="babes-grid">
-    <div class="babe-photo">Photo coming soon</div>
-    <div class="babe-photo">Photo coming soon</div>
-    <div class="babe-photo">Photo coming soon</div>
-    <div class="babe-photo">Photo coming soon</div>
-    <div class="babe-photo">Photo coming soon</div>
-    <div class="babe-photo">Photo coming soon</div>
-    <div class="babe-photo">Photo coming soon</div>
-    <div class="babe-photo">Photo coming soon</div>
-    <div class="babe-photo">Photo coming soon</div>
+    <img class="babe-photo" src="images/babe-1.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-2.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-3.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-4.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-5.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-6.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-7.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-8.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-9.jpg" alt="One of Becca's babes">
+    <img class="babe-photo" src="images/babe-10.jpg" alt="Rachael">
   </div>
 </div>
 
@@ -449,17 +445,15 @@
     <h2 class="section-title">Where We're Staying</h2>
     <div class="stay-grid">
       <div class="stay-card">
-        <div class="stay-photo">Photo coming soon</div>
+        <div class="stay-photo-grid">
+          <img class="photo-main" src="images/airbnb-exterior.jpg" alt="Exterior of 721 Isthmus Court">
+          <img class="photo-sub-a" src="images/airbnb-patio.jpg" alt="Patio and outdoor dining area">
+          <img class="photo-sub-b" src="images/airbnb-interior.jpg" alt="Kitchen and living room">
+        </div>
         <div class="stay-body">
           <h3>The Airbnb</h3>
-          <p>Details to be added.</p>
-        </div>
-      </div>
-      <div class="stay-card">
-        <div class="stay-photo">Photo coming soon</div>
-        <div class="stay-body">
-          <h3>The Rooms</h3>
-          <p>To be added.</p>
+          <p>721 Isthmus Court<br>San Diego, CA 92109</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=721+Isthmus+Court+San+Diego+CA+92109" target="_blank" rel="noopener">View on Google Maps &rarr;</a>
         </div>
       </div>
     </div>
@@ -469,68 +463,15 @@
 <!-- ================= PAYMENTS ================= -->
 <section class="payments" id="payments">
   <div class="wrap">
-    <h2 class="section-title">What Else Do I Need to Pay For?</h2>
+    <h2 class="section-title">What Do I Need to Pay For?</h2>
     <div class="pay-grid">
-      <div class="pay-item">
-        <span class="amount">2nd Airbnb Payment</span>
-        <span class="label">Date TBD</span>
-      </div>
-      <div class="pay-item">
-        <span class="amount">$135 each</span>
-        <span class="label">Boat</span>
-      </div>
-      <div class="pay-item">
-        <span class="amount">Optional</span>
-        <span class="label">Padres Ticket</span>
-      </div>
-      <div class="pay-item">
-        <span class="amount">Questions?</span>
-        <span class="label">Reach out to Kayte</span>
-      </div>
+      <div class="pay-item"><span class="amount">Airbnb</span></div>
+      <div class="pay-item"><span class="amount">Boat</span></div>
+      <div class="pay-item"><span class="amount">Flight</span></div>
+      <div class="pay-item"><span class="amount">Padres</span><span class="label">Optional</span></div>
+      <div class="pay-item"><span class="amount">Food &amp; Drink</span></div>
     </div>
-    <p class="section-sub" style="margin-top:28px;">Full expense tracker: Google Doc link coming soon</p>
-  </div>
-</section>
-
-<!-- ================= TRIP TAB ================= -->
-<section class="tab" id="tab">
-  <div class="wrap">
-    <h2 class="section-title">The Trip Tab</h2>
-    <p class="section-sub">Who's owed what &mdash; updates live for everyone.</p>
-
-    <div id="tab-setup-notice" class="setup-notice" style="display:none;">
-      The trip tab isn't connected yet &mdash; Rachael needs to add the Supabase project keys in the site code.
-    </div>
-
-    <div class="tab-columns">
-      <div>
-        <table class="balance-table" id="balance-table">
-          <thead><tr><th>Name</th><th>Paid</th><th>Balance</th></tr></thead>
-          <tbody id="balance-body"><tr><td colspan="3">Loading&hellip;</td></tr></tbody>
-        </table>
-
-        <ul class="settle-list" id="settle-list"></ul>
-        <ul class="recent-list" id="recent-list"></ul>
-      </div>
-
-      <form class="expense-form" id="expense-form">
-        <h3>Add an Expense</h3>
-
-        <label for="exp-desc">What was it?</label>
-        <input type="text" id="exp-desc" required placeholder="e.g. Boat deposit">
-
-        <label for="exp-amount">Amount ($)</label>
-        <input type="number" id="exp-amount" required min="0" step="0.01" placeholder="0.00">
-
-        <label for="exp-paidby">Paid by</label>
-        <select id="exp-paidby" required></select>
-
-        <label>Split between</label>
-        <div class="checkbox-grid" id="exp-participants"></div>
-
-        <button type="submit">Add Expense</button>
-      </form>
-    </div>
+    <p class="section-sub" style="margin-top:28px;">Prices are still being finalized. Track it all &mdash; and see who owes who &mdash; on <a href="expenses.html" style="color:var(--pink);font-weight:600;">the Trip Tab page</a>.</p>
   </div>
 </section>
 
@@ -538,157 +479,6 @@
   <p class="script">Becca's Bachelorette</p>
   <p>September 4&ndash;7, 2026 &middot; San Diego, California</p>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  // ============================================================
-  // TRIP TAB SETUP (one-time, ~5 minutes) — see setup guide
-  // 1. Create a free project at https://supabase.com
-  // 2. In the SQL editor, run the "create table" script from the guide
-  // 3. Paste your Project URL + anon public API key below
-  // ============================================================
-  const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-
-  const PEOPLE = ["Becca","Rachael","Kayte","Megan C","Megan L","Kirsten","Amy","Allison","Mya","Kelly"];
-  const isConfigured = !SUPABASE_URL.includes("YOUR_") && !SUPABASE_ANON_KEY.includes("YOUR_");
-
-  let supabaseClient;
-  if (isConfigured) {
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  } else {
-    document.getElementById('tab-setup-notice').style.display = 'block';
-    document.getElementById('balance-body').innerHTML =
-      '<tr><td colspan="3">Connect Supabase to see live balances.</td></tr>';
-  }
-
-  // Build the "paid by" dropdown and participant checkboxes
-  const paidBySelect = document.getElementById('exp-paidby');
-  const participantsWrap = document.getElementById('exp-participants');
-  PEOPLE.forEach(name => {
-    const opt = document.createElement('option');
-    opt.value = name; opt.textContent = name;
-    paidBySelect.appendChild(opt);
-
-    const label = document.createElement('label');
-    const cb = document.createElement('input');
-    cb.type = 'checkbox'; cb.value = name; cb.checked = true;
-    label.appendChild(cb);
-    label.append(' ' + name);
-    participantsWrap.appendChild(label);
-  });
-
-  function fmt(n) {
-    const sign = n < 0 ? '-' : '';
-    return sign + '$' + Math.abs(n).toFixed(2);
-  }
-
-  function computeBalances(expenses) {
-    const balance = {}, paid = {};
-    PEOPLE.forEach(p => { balance[p] = 0; paid[p] = 0; });
-    expenses.forEach(e => {
-      const participants = (e.participants && e.participants.length) ? e.participants : PEOPLE;
-      const share = e.amount / participants.length;
-      if (paid[e.paid_by] !== undefined) paid[e.paid_by] += Number(e.amount);
-      if (balance[e.paid_by] !== undefined) balance[e.paid_by] += Number(e.amount);
-      participants.forEach(p => { if (balance[p] !== undefined) balance[p] -= share; });
-    });
-    return { balance, paid };
-  }
-
-  function renderBalances(balance, paid) {
-    const body = document.getElementById('balance-body');
-    body.innerHTML = '';
-    PEOPLE.forEach(name => {
-      const bal = balance[name];
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${name}</td><td>${fmt(paid[name])}</td>` +
-        `<td class="${bal >= 0 ? 'balance-pos' : 'balance-neg'}">` +
-        `${bal >= 0 ? 'is owed ' : 'owes '}${fmt(Math.abs(bal))}</td>`;
-      body.appendChild(tr);
-    });
-  }
-
-  function renderSettleUp(balance) {
-    const list = document.getElementById('settle-list');
-    list.innerHTML = '';
-    const debtors = [], creditors = [];
-    PEOPLE.forEach(p => {
-      const v = Math.round(balance[p] * 100) / 100;
-      if (v < -0.01) debtors.push({ name: p, amt: -v });
-      else if (v > 0.01) creditors.push({ name: p, amt: v });
-    });
-    debtors.sort((a, b) => b.amt - a.amt);
-    creditors.sort((a, b) => b.amt - a.amt);
-
-    const settlements = [];
-    let i = 0, j = 0;
-    while (i < debtors.length && j < creditors.length) {
-      const pay = Math.min(debtors[i].amt, creditors[j].amt);
-      settlements.push({ from: debtors[i].name, to: creditors[j].name, amt: pay });
-      debtors[i].amt -= pay; creditors[j].amt -= pay;
-      if (debtors[i].amt < 0.01) i++;
-      if (creditors[j].amt < 0.01) j++;
-    }
-
-    if (settlements.length === 0) {
-      list.innerHTML = '<li>Everyone&rsquo;s settled up! 🎉</li>';
-      return;
-    }
-    settlements.forEach(s => {
-      const li = document.createElement('li');
-      li.innerHTML = `${s.from} pays <b>${s.to}</b> ${fmt(s.amt)}`;
-      list.appendChild(li);
-    });
-  }
-
-  function renderRecent(expenses) {
-    const list = document.getElementById('recent-list');
-    list.innerHTML = '';
-    expenses.slice(0, 8).forEach(e => {
-      const li = document.createElement('li');
-      li.textContent = `${e.description} — ${fmt(Number(e.amount))} (paid by ${e.paid_by})`;
-      list.appendChild(li);
-    });
-  }
-
-  async function loadExpenses() {
-    if (!isConfigured) return;
-    const { data, error } = await supabaseClient
-      .from('expenses')
-      .select('*')
-      .order('created_at', { ascending: false });
-    if (error) { console.error(error); return; }
-    const { balance, paid } = computeBalances(data);
-    renderBalances(balance, paid);
-    renderSettleUp(balance);
-    renderRecent(data);
-  }
-
-  document.getElementById('expense-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!isConfigured) { alert('The trip tab is not connected yet.'); return; }
-
-    const description = document.getElementById('exp-desc').value.trim();
-    const amount = parseFloat(document.getElementById('exp-amount').value);
-    const paid_by = paidBySelect.value;
-    const participants = Array.from(participantsWrap.querySelectorAll('input:checked')).map(cb => cb.value);
-
-    if (!description || !amount || participants.length === 0) return;
-
-    const { error } = await supabaseClient
-      .from('expenses')
-      .insert([{ description, amount, paid_by, participants }]);
-
-    if (error) { alert('Something went wrong: ' + error.message); return; }
-
-    e.target.reset();
-    participantsWrap.querySelectorAll('input').forEach(cb => cb.checked = true);
-    loadExpenses();
-  });
-
-  if (isConfigured) loadExpenses();
-</script>
 
 </body>
 </html>
