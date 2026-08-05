@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Becca's Bachelorette</title>
-<meta name="description" content="Toes in the sand, ring on her hand — Becca's Bachelorette, September 4-7, San Diego, CA">
+<title>Becca's Beach Bach</title>
+<meta name="description" content="Toes in the sand, ring on her hand: Becca's Beach Bach, September 4-7, San Diego, CA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Lilita+One&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --coral:#FF6F61;
+    --coral:#FF5A3C;
     --pink:#FF1F8F;
-    --gold:#E8B33D;
+    --gold:#FFC845;
     --cream:#FFF3E2;
     --navy:#150085;
     --white:#FFFFFF;
@@ -61,7 +61,7 @@
   .hero-overlay{
     position:absolute;
     inset:0;
-    background:linear-gradient(160deg,rgba(255,111,97,.72) 0%,rgba(255,31,143,.72) 100%);
+    background:linear-gradient(160deg,rgba(255,90,60,.72) 0%,rgba(255,31,143,.72) 100%);
     z-index:1;
   }
   .hero-content{position:relative;z-index:2;}
@@ -81,11 +81,19 @@
     text-shadow:0 6px 0 rgba(0,0,0,.06);
   }
   .hero-name{
-    font-size:clamp(38px,7vw,72px);
     color:var(--white);
     text-shadow:0 4px 0 rgba(0,0,0,.08);
     margin-bottom:24px;
-    line-height:1;
+    line-height:1.05;
+  }
+  .hero-name-main{
+    display:block;
+    font-size:clamp(48px,9vw,90px);
+  }
+  .hero-name-sub{
+    display:block;
+    font-size:clamp(34px,6.3vw,62px);
+    letter-spacing:2px;
   }
   .hero-sub{
     display:inline-block;
@@ -120,32 +128,47 @@
 
   /* ---------- ITINERARY ---------- */
   .itinerary{background:var(--white);}
+  .itinerary-note{
+    text-align:center;
+    max-width:520px;
+    margin:-24px auto 40px;
+    font-size:13px;
+    font-style:italic;
+    color:#8a6a55;
+  }
   .day-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:24px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
   }
   .day-card{
     background:var(--cream);
     border-radius:20px;
-    padding:30px 26px;
-    position:relative;
-    border:3px solid transparent;
+    overflow:hidden;
+    box-shadow:0 10px 24px rgba(255,90,60,.16);
     transition:transform .2s ease;
   }
-  .day-card:hover{transform:translateY(-4px);}
-  .day-card h3{
-    color:var(--coral);
-    text-transform:uppercase;
-    font-size:26px;
-    margin-bottom:16px;
+  .day-card:hover{transform:translateY(-5px);}
+  .day-card-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:20px 24px;
+    background:linear-gradient(135deg,var(--coral),var(--pink));
   }
-  .day-card ul{list-style:none;}
+  .day-icon{width:26px;height:26px;flex-shrink:0;stroke:var(--white);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .day-card h3{
+    color:var(--white);
+    text-transform:uppercase;
+    font-size:22px;
+    margin:0;
+  }
+  .day-card ul{list-style:none;padding:18px 24px 24px;}
   .day-card li{
     display:flex;
     gap:10px;
-    padding:8px 0;
-    border-bottom:1px dashed rgba(255,111,97,.3);
+    padding:9px 0;
+    border-bottom:1px dashed rgba(255,90,60,.25);
     font-size:14px;
   }
   .day-card li:last-child{border-bottom:none;}
@@ -153,7 +176,7 @@
     color:var(--pink);
     font-weight:700;
     white-space:nowrap;
-    min-width:78px;
+    min-width:70px;
   }
 
   /* ---------- PACKING LIST ---------- */
@@ -162,25 +185,53 @@
   .pack-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:24px;
+    gap:22px;
+    max-width:600px;
+    margin:0 auto;
   }
   .pack-card{
-    background:rgba(255,255,255,.12);
-    border:2px dashed rgba(255,255,255,.5);
-    border-radius:18px;
-    padding:26px;
+    background:var(--white);
+    border-radius:20px;
+    padding:32px 24px;
     text-align:center;
+    box-shadow:0 10px 26px rgba(0,0,0,.16);
+    transition:transform .2s ease;
+  }
+  .pack-card:hover{transform:translateY(-4px);}
+  .pack-icon{
+    width:60px;
+    height:60px;
+    margin:0 auto 14px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--pink),var(--gold));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
   }
   .pack-card h3{
+    font-family:'Lilita One',cursive;
     text-transform:uppercase;
-    font-size:20px;
-    margin-bottom:10px;
-    color:var(--white);
+    font-size:17px;
+    margin-bottom:8px;
+    color:var(--pink);
   }
   .pack-card p{
-    font-style:italic;
-    opacity:.9;
-    font-size:14px;
+    font-size:13px;
+    color:#8a6a55;
+  }
+  .swatches{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:14px;
+  }
+  .swatch{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    display:inline-block;
+    box-shadow:0 2px 4px rgba(0,0,0,.15);
   }
 
   /* ---------- STAY ---------- */
@@ -192,7 +243,7 @@
   .stay-card{
     background:var(--white);
     border-radius:20px;
-    box-shadow:0 10px 30px rgba(255,111,97,.18);
+    box-shadow:0 10px 30px rgba(255,90,60,.18);
     transform:rotate(-1deg);
     max-width:460px;
     width:100%;
@@ -230,7 +281,7 @@
     border-radius:18px;
     padding:28px 14px;
     text-align:center;
-    box-shadow:0 8px 20px rgba(255,111,97,.14);
+    box-shadow:0 8px 20px rgba(255,90,60,.14);
     transition:transform .2s ease;
   }
   .pay-card:hover{transform:translateY(-4px);}
@@ -243,8 +294,8 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:26px;
   }
+  .pay-icon svg{width:26px;height:26px;stroke:var(--white);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
   .pay-card .name{
     display:block;
     font-family:'Lilita One',cursive;
@@ -298,9 +349,10 @@
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content wrap">
-    <p class="pretitle">Sun, Sand &amp; a</p>
-    <h1>Ring On Her Hand</h1>
-    <p class="hero-name script">Becca's Bachelorette</p>
+    <h1 class="hero-name script">
+      <span class="hero-name-main">Becca's</span>
+      <span class="hero-name-sub">Beach Bach</span>
+    </h1>
     <span class="hero-sub">September 4&ndash;7 &middot; San Diego, CA</span>
   </div>
 </header>
@@ -309,41 +361,55 @@
 <section class="itinerary" id="itinerary">
   <div class="wrap">
     <h2 class="section-title">The Weekend</h2>
-    <p class="section-sub">Four days of sun, sand, and celebrating Becca &mdash; here's the plan so far.</p>
+    <p class="section-sub">Four days of sun, sand, and celebrating Becca. Here's the plan so far.</p>
+    <p class="itinerary-note">We're keeping things loose for now. More details to come closer to the weekend and once we're all together.</p>
     <div class="day-grid">
 
       <div class="day-card">
-        <h3>Friday</h3>
+        <div class="day-card-head">
+          <svg class="day-icon" viewBox="0 0 24 24"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg>
+          <h3>Friday</h3>
+        </div>
         <ul>
-          <li><span class="day-time">4:00 PM</span><span>Check In</span></li>
-          <li><span class="day-time">6:30 PM</span><span>Dinner Out &amp; Exploring</span></li>
+          <li><span class="day-time">4:00 PM</span><span>Check in at the Airbnb and relax</span></li>
+          <li><span class="day-time">Evening</span><span>Dinner out and exploring Belmont Park, just a few minutes away</span></li>
         </ul>
       </div>
 
       <div class="day-card">
-        <h3>Saturday</h3>
+        <div class="day-card-head">
+          <svg class="day-icon" viewBox="0 0 24 24"><path d="M12 3v10"/><path d="M12 4c2.5 1 4.3 3.4 4.8 6.4L12 12"/><path d="M4 16h16l-1.8 3.3a2 2 0 0 1-1.7 1H7.5a2 2 0 0 1-1.7-1z"/></svg>
+          <h3>Saturday</h3>
+        </div>
         <ul>
-          <li><span class="day-time">10:00 AM</span><span>Beach</span></li>
-          <li><span class="day-time">1&ndash;5 PM</span><span>Boat</span></li>
-          <li><span class="day-time">7:30 PM</span><span>Dinner Out</span></li>
-          <li><span class="day-time">9:00 PM</span><span>Bar Hopping</span></li>
+          <li><span class="day-time">Morning</span><span>Wake up and enjoy the beach, just a few blocks away</span></li>
+          <li><span class="day-time">11:30 AM</span><span>Head to America's Cup Harbor for lunch/snack</span></li>
+          <li><span class="day-time">12:30 PM</span><span>Arrive at the harbor for the boat cruise</span></li>
+          <li><span class="day-time">1&ndash;5 PM</span><span>Boat cruise</span></li>
+          <li><span class="day-time">5:15 PM</span><span>Head back to the Airbnb to get ready for dinner</span></li>
+          <li><span class="day-time">8:00 PM</span><span>Dinner out, details TBD</span></li>
         </ul>
       </div>
 
       <div class="day-card">
-        <h3>Sunday</h3>
+        <div class="day-card-head">
+          <svg class="day-icon" viewBox="0 0 24 24"><path d="M4 17h16"/><path d="M6 17a6 6 0 0 1 12 0"/><path d="M12 6v3"/><path d="m7 9 1.5 1.8"/><path d="m17 9-1.5 1.8"/><path d="M4 20.5h16"/></svg>
+          <h3>Sunday</h3>
+        </div>
         <ul>
-          <li><span class="day-time">11:00 AM</span><span>Beach Day &amp; Exploring</span></li>
-          <li><span class="day-time">7:00 PM</span><span>Dinner at Airbnb</span></li>
+          <li><span class="day-time">Daytime</span><span>Beach day and exploring</span></li>
+          <li><span class="day-time">6:00 PM</span><span>Dinner at the Airbnb</span></li>
         </ul>
       </div>
 
       <div class="day-card">
-        <h3>Monday</h3>
+        <div class="day-card-head">
+          <svg class="day-icon" viewBox="0 0 24 24"><path d="M2 12 22 3 15 21l-3.5-7L2 12z"/><path d="M11.5 14 22 3"/></svg>
+          <h3>Monday</h3>
+        </div>
         <ul>
-          <li><span class="day-time">10:00 AM</span><span>Check Out</span></li>
-          <li><span class="day-time">10:10 AM</span><span>Exploring</span></li>
-          <li><span class="day-time">2:10 PM</span><span>Padres Game</span></li>
+          <li><span class="day-time">10:00 AM</span><span>Check out</span></li>
+          <li><span class="day-time">After</span><span>Explore until flight home</span></li>
         </ul>
       </div>
 
@@ -355,19 +421,24 @@
 <section class="packing" id="packing">
   <div class="wrap">
     <h2 class="section-title">What To Pack</h2>
-    <p class="section-sub">A few activity-specific packing notes &mdash; details still being finalized.</p>
+    <p class="section-sub">A few activity-specific packing notes, more to come as plans firm up.</p>
     <div class="pack-grid">
       <div class="pack-card">
-        <h3>Boat</h3>
-        <p>Details TBD</p>
+        <div class="pack-icon">🩱</div>
+        <h3>Boat Day</h3>
+        <p>Black swimsuits</p>
       </div>
       <div class="pack-card">
-        <h3>Beach</h3>
-        <p>Details TBD</p>
-      </div>
-      <div class="pack-card">
+        <div class="pack-icon">🌅</div>
         <h3>Saturday Dinner</h3>
-        <p>Details TBD</p>
+        <p>Dress in sunset colors</p>
+        <div class="swatches">
+          <span class="swatch" style="background:#FF1F8F"></span>
+          <span class="swatch" style="background:#E5484D"></span>
+          <span class="swatch" style="background:#FF5A3C"></span>
+          <span class="swatch" style="background:#FF8A3D"></span>
+          <span class="swatch" style="background:#FFC845"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -393,14 +464,12 @@
 <section class="payments" id="payments">
   <div class="wrap">
     <h2 class="section-title">What Do I Need to Pay For?</h2>
-    <p class="section-sub">Prices are still being finalized &mdash; here's what to budget for.</p>
+    <p class="section-sub">Prices are still being finalized. Here's what to budget for.</p>
     <div class="pay-grid">
-      <div class="pay-card"><div class="pay-icon">🏠</div><span class="name">Airbnb</span></div>
-      <div class="pay-card"><div class="pay-icon">⛵</div><span class="name">Boat</span></div>
-      <div class="pay-card"><div class="pay-icon">✈️</div><span class="name">Flight</span></div>
-      <div class="pay-card"><div class="pay-icon">🍹</div><span class="name">Food &amp; Drink</span></div>
-      <div class="pay-card"><div class="pay-icon">🚗</div><span class="name">Transportation</span></div>
-      <div class="pay-card"><div class="pay-icon">⚾</div><span class="name">Baseball Game</span><span class="note">Optional</span></div>
+      <div class="pay-card"><div class="pay-icon"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg></div><span class="name">Airbnb</span></div>
+      <div class="pay-card"><div class="pay-icon"><svg viewBox="0 0 24 24"><path d="M12 3v10"/><path d="M12 4c2.5 1 4.3 3.4 4.8 6.4L12 12"/><path d="M4 16h16l-1.8 3.3a2 2 0 0 1-1.7 1H7.5a2 2 0 0 1-1.7-1z"/></svg></div><span class="name">Boat</span></div>
+      <div class="pay-card"><div class="pay-icon"><svg viewBox="0 0 24 24"><path d="M2 12 22 3 15 21l-3.5-7L2 12z"/><path d="M11.5 14 22 3"/></svg></div><span class="name">Flight &amp; Transportation</span></div>
+      <div class="pay-card"><div class="pay-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16L12 13z"/><path d="M12 13v7"/><path d="M8 20h8"/></svg></div><span class="name">Food &amp; Drink</span></div>
     </div>
     <div class="tab-cta">
       <a class="tab-link-btn" href="expenses.html">Open the Trip Tab &rarr;</a>
@@ -409,7 +478,7 @@
 </section>
 
 <footer>
-  <p class="script">Becca's Bachelorette</p>
+  <p class="script">Becca's Beach Bach</p>
   <p>September 4&ndash;7, 2026 &middot; San Diego, California</p>
 </footer>
 
